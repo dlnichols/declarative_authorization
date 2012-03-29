@@ -170,7 +170,7 @@ module Authorization
       options[:context] ||= options[:object] && (
         options[:object].class.respond_to?(:decl_auth_context) ?
             options[:object].class.decl_auth_context :
-            options[:object].class.name.tableize.to_sym
+            options[:object].class.name.tableize.sub("/","_").to_sym
       ) rescue NoMethodError
       
       user, roles, privileges = user_roles_privleges_from_options(privilege, options)
