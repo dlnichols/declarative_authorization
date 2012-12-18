@@ -40,7 +40,7 @@ module Authorization
   end
 
   def self.activate_authorization_rules_browser? # :nodoc:
-    ::Rails.env.development?
+    false
   end
 
   @@dot_path = "dot"

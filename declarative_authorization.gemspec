@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "declarative_authorization"
-  s.version = "0.5.6.id"
+  s.version = "0.5.6.id2"
 
   s.required_ruby_version = ">= 1.8.6"
   s.authors = ["Steffen Bartsch"]
