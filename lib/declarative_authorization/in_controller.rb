@@ -636,12 +636,12 @@ module Authorization
         contr.instance_eval(&@load_object_method)
       else
         load_object_model = @load_object_model ||
-            (@context ? @context.to_s.classify.constantize : contr.class.name.sub("Controller", "").singularize.constantize)
-        instance_var = :"@#{load_object_model.name.demodulize.underscore}"
+            (@context ? @context.to_s.classify : contr.class.name.sub("Controller", "").singularize)
+        instance_var = :"@#{load_object_model.demodulize.underscore}"
         object = contr.instance_variable_get(instance_var)
         unless object
           begin
-            object = load_object_model.find(contr.params[:id])
+            object = load_object_model.constantize.find(contr.params[:id])
           rescue => e
             contr.logger.debug("filter_access_to tried to find " +
                 "#{load_object_model} from params[:id] " +
